@@ -10,16 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var shieldView: CaptainAmericaShield!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let shieldWidth = 300
+        
+        shieldView = CaptainAmericaShield(frame: CGRect(x: 0, y: 0, width: shieldWidth, height: shieldWidth))
+        view.addSubview(shieldView)
+        
+        shieldView.center = view.center
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 

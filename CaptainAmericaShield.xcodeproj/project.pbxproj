@@ -12,6 +12,7 @@
 		105CCB221FE1B2A8001CC3FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 105CCB201FE1B2A8001CC3FC /* Main.storyboard */; };
 		105CCB241FE1B2A8001CC3FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 105CCB231FE1B2A8001CC3FC /* Assets.xcassets */; };
 		105CCB271FE1B2A8001CC3FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 105CCB251FE1B2A8001CC3FC /* LaunchScreen.storyboard */; };
+		105CCB301FE1B2C5001CC3FC /* CaptainAmericaShield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105CCB2F1FE1B2C5001CC3FC /* CaptainAmericaShield.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		105CCB231FE1B2A8001CC3FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		105CCB261FE1B2A8001CC3FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		105CCB281FE1B2A8001CC3FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		105CCB2F1FE1B2C5001CC3FC /* CaptainAmericaShield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainAmericaShield.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +56,21 @@
 		105CCB1B1FE1B2A8001CC3FC /* CaptainAmericaShield */ = {
 			isa = PBXGroup;
 			children = (
+				105CCB2E1FE1B2BA001CC3FC /* CaptainAmericaShield */,
 				105CCB1C1FE1B2A8001CC3FC /* AppDelegate.swift */,
 				105CCB1E1FE1B2A8001CC3FC /* ViewController.swift */,
 				105CCB201FE1B2A8001CC3FC /* Main.storyboard */,
 				105CCB231FE1B2A8001CC3FC /* Assets.xcassets */,
 				105CCB251FE1B2A8001CC3FC /* LaunchScreen.storyboard */,
 				105CCB281FE1B2A8001CC3FC /* Info.plist */,
+			);
+			path = CaptainAmericaShield;
+			sourceTree = "<group>";
+		};
+		105CCB2E1FE1B2BA001CC3FC /* CaptainAmericaShield */ = {
+			isa = PBXGroup;
+			children = (
+				105CCB2F1FE1B2C5001CC3FC /* CaptainAmericaShield.swift */,
 			);
 			path = CaptainAmericaShield;
 			sourceTree = "<group>";
@@ -136,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				105CCB301FE1B2C5001CC3FC /* CaptainAmericaShield.swift in Sources */,
 				105CCB1F1FE1B2A8001CC3FC /* ViewController.swift in Sources */,
 				105CCB1D1FE1B2A8001CC3FC /* AppDelegate.swift in Sources */,
 			);
