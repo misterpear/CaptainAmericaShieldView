@@ -20,31 +20,13 @@ class CaptainAmericaShield: UIView {
         let itemWidth = frame.height / 10
         let boundsCenter = CGPoint(x: frame.width / 2, y: frame.height / 2)
         
-        let firstRedCirclePath = UIBezierPath(arcCenter: boundsCenter, radius: itemWidth * 4.5, startAngle: 0, endAngle: .pi * 2, clockwise: false)
-        
         // #DB5120
-        firstRedCircleLayer = CAShapeLayer()
-        firstRedCircleLayer.path = firstRedCirclePath.cgPath
-        firstRedCircleLayer.fillColor = UIColor.clear.cgColor
-        firstRedCircleLayer.strokeColor = UIColor.red.cgColor
-        firstRedCircleLayer.lineWidth = itemWidth
-        
-        let whiteCirclePath = UIBezierPath(arcCenter: boundsCenter, radius: itemWidth * 3.5, startAngle: 0, endAngle: .pi * 2, clockwise: false)
+        firstRedCircleLayer = CaptainAmericaShield.circleLayer(center: boundsCenter, radius: itemWidth * 4.5, lineWidth: itemWidth, color: .red)
         
         // #FEFEFE
-        whiteCircleLayer = CAShapeLayer()
-        whiteCircleLayer.path = whiteCirclePath.cgPath
-        whiteCircleLayer.fillColor = UIColor.clear.cgColor
-        whiteCircleLayer.strokeColor = UIColor.white.cgColor
-        whiteCircleLayer.lineWidth = itemWidth
+        whiteCircleLayer = CaptainAmericaShield.circleLayer(center: boundsCenter, radius: itemWidth * 3.5, lineWidth: itemWidth, color: .white)
         
-        let secondRedCirclePath = UIBezierPath(arcCenter: boundsCenter, radius: itemWidth * 2.5, startAngle: 0, endAngle: .pi * 2, clockwise: false)
-        
-        secondRedCircleLayer = CAShapeLayer()
-        secondRedCircleLayer.path = secondRedCirclePath.cgPath
-        secondRedCircleLayer.fillColor = UIColor.clear.cgColor
-        secondRedCircleLayer.strokeColor = UIColor.red.cgColor
-        secondRedCircleLayer.lineWidth = itemWidth
+        secondRedCircleLayer = CaptainAmericaShield.circleLayer(center: boundsCenter, radius: itemWidth * 2.5, lineWidth: itemWidth, color: .red)
         
         // #2987DF
         blueCircleLayer = CALayer()
@@ -56,7 +38,7 @@ class CaptainAmericaShield: UIView {
         blueCircleLayer.position = boundsCenter
 
         let starLayerFrame = CGRect(x: 0, y: 0, width: itemWidth * 4, height: itemWidth * 4)
-        starLayer = CaptainAmericaShield.starWithFivePoints(inRect: starLayerFrame)
+        starLayer = CaptainAmericaShield.starWithFivePoints(frame: starLayerFrame)
         starLayer.position = boundsCenter
         
         super.init(frame: frame)
@@ -76,19 +58,31 @@ class CaptainAmericaShield: UIView {
 
 extension CaptainAmericaShield {
     
+    static func circleLayer(center: CGPoint, radius: CGFloat, lineWidth: CGFloat, color: UIColor) -> CAShapeLayer {
+        let circlePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: .pi * 2, clockwise: false)
+        
+        let circleLayer = CAShapeLayer()
+        circleLayer.path = circlePath.cgPath
+        circleLayer.fillColor = UIColor.clear.cgColor
+        circleLayer.strokeColor = color.cgColor
+        circleLayer.lineWidth = lineWidth
+        
+        return circleLayer
+    }
+    
     func star(withPoint point: Int) -> CAShapeLayer {
         
         return CAShapeLayer()
     }
     
-    static func starWithFivePoints(inRect rect: CGRect) -> CAShapeLayer {
+    static func starWithFivePoints(frame: CGRect) -> CAShapeLayer {
         let numberOfPoints = 5
         
         let angle = Double.pi * 2 / Double(numberOfPoints)
-        let radius = Double(rect.width / 2)
+        let radius = Double(frame.width / 2)
         
-        let centerX = Double(rect.width / 2)
-        let centerY = Double(rect.width / 2)
+        let centerX = Double(frame.width / 2)
+        let centerY = Double(frame.width / 2)
         
         let originAngle = Double.pi / 2
         let originX = centerX + radius * -cos(originAngle)
@@ -110,7 +104,7 @@ extension CaptainAmericaShield {
         }
         
         let starLayer = CAShapeLayer()
-        starLayer.frame = rect
+        starLayer.frame = frame
         starLayer.path = path
         starLayer.fillColor = UIColor.white.cgColor
         

@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         
         shieldView.center = view.center
         
-        addDebug()
+//        addDebug()
     }
     
     func addDebug() {
@@ -40,9 +40,9 @@ class ViewController: UIViewController {
         let maxLine = 10
         
         for n in 0...maxLine {
-            let line1 = UIView(frame: CGRect(x: n * (lineHeight / maxLine), y: 0, width: 1, height: lineHeight))
-            line1.backgroundColor = .black
-            shieldView.addSubview(line1)
+            let line = UIView(frame: CGRect(x: n * (lineHeight / maxLine), y: 0, width: 1, height: lineHeight))
+            line.backgroundColor = .black
+            shieldView.addSubview(line)
         }
         
         // Red line.
