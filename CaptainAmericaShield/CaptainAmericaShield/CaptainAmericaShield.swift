@@ -55,12 +55,14 @@ class CaptainAmericaShield: UIView {
         blueCircleLayer.cornerRadius = (itemWidth * 4) / 2
         blueCircleLayer.borderWidth = itemWidth
         blueCircleLayer.borderColor = UIColor.blue.cgColor
+        blueCircleLayer.backgroundColor = UIColor.blue.cgColor
         
         blueCircleLayer.position = boundsCenter
 
-        starLayer = CALayer()
-        starLayer.frame = CGRect(x: 0, y: 0, width: itemWidth * 3, height: itemWidth * 3)
-        starLayer.backgroundColor = UIColor.white.cgColor
+        
+        let starLayerFrame = CGRect(x: 0, y: 0, width: itemWidth * 4, height: itemWidth * 4)
+        starLayer = CaptainAmericaShield.starWithFivePoints(inRect: starLayerFrame)
+        
         
         starLayer.position = boundsCenter
         
@@ -75,6 +77,47 @@ class CaptainAmericaShield: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension CaptainAmericaShield {
+    
+    func star(withPoint point: Int) -> CAShapeLayer {
+        
+        return CAShapeLayer()
+    }
+    
+    static func starWithFivePoints(inRect rect: CGRect) -> CAShapeLayer {
+        let starLayer = CAShapeLayer()
+        starLayer.frame = rect
+        
+        let numberOfPoints: Double = 5
+        
+        let angleIncrement = Double.pi * 2 / numberOfPoints
+        let radius = Double(rect.width / 2)
+        
+        let centerX = Double(rect.width / 2)
+        let centerY = Double(rect.width / 2)
+        
+        let initialPoint = CGPoint(x: centerX + radius * cos(0), y: centerY + radius * sin(0))
+        
+        let path = CGMutablePath()
+        path.move(to: initialPoint)
+        
+        for i in 0...Int(numberOfPoints) {
+            let x = centerX + radius * cos(angleIncrement * Double(i) * 2)
+            let y = centerY + radius * sin(angleIncrement * Double(i) * 2)
+            
+            let nextPoint = CGPoint(x: x, y: y)
+            
+            path.addLine(to: nextPoint)
+        }
+        
+        starLayer.path = path
+        starLayer.fillColor = UIColor.white.cgColor
+        
+        return starLayer
     }
     
 }
