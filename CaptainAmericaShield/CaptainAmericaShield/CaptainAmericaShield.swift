@@ -25,7 +25,6 @@ class CaptainAmericaShield: UIView {
         // #DB5120
         firstRedCircleLayer = CAShapeLayer()
         firstRedCircleLayer.path = firstRedCirclePath.cgPath
-        
         firstRedCircleLayer.fillColor = UIColor.clear.cgColor
         firstRedCircleLayer.strokeColor = UIColor.red.cgColor
         firstRedCircleLayer.lineWidth = itemWidth
@@ -35,7 +34,6 @@ class CaptainAmericaShield: UIView {
         // #FEFEFE
         whiteCircleLayer = CAShapeLayer()
         whiteCircleLayer.path = whiteCirclePath.cgPath
-        
         whiteCircleLayer.fillColor = UIColor.clear.cgColor
         whiteCircleLayer.strokeColor = UIColor.white.cgColor
         whiteCircleLayer.lineWidth = itemWidth
@@ -44,7 +42,6 @@ class CaptainAmericaShield: UIView {
         
         secondRedCircleLayer = CAShapeLayer()
         secondRedCircleLayer.path = secondRedCirclePath.cgPath
-        
         secondRedCircleLayer.fillColor = UIColor.clear.cgColor
         secondRedCircleLayer.strokeColor = UIColor.red.cgColor
         secondRedCircleLayer.lineWidth = itemWidth
@@ -56,14 +53,10 @@ class CaptainAmericaShield: UIView {
         blueCircleLayer.borderWidth = itemWidth
         blueCircleLayer.borderColor = UIColor.blue.cgColor
         blueCircleLayer.backgroundColor = UIColor.blue.cgColor
-        
         blueCircleLayer.position = boundsCenter
 
-        
         let starLayerFrame = CGRect(x: 0, y: 0, width: itemWidth * 4, height: itemWidth * 4)
         starLayer = CaptainAmericaShield.starWithFivePoints(inRect: starLayerFrame)
-        
-        
         starLayer.position = boundsCenter
         
         super.init(frame: frame)
@@ -89,31 +82,35 @@ extension CaptainAmericaShield {
     }
     
     static func starWithFivePoints(inRect rect: CGRect) -> CAShapeLayer {
-        let starLayer = CAShapeLayer()
-        starLayer.frame = rect
+        let numberOfPoints = 5
         
-        let numberOfPoints: Double = 5
-        
-        let angleIncrement = Double.pi * 2 / numberOfPoints
+        let angle = Double.pi * 2 / Double(numberOfPoints)
         let radius = Double(rect.width / 2)
         
         let centerX = Double(rect.width / 2)
         let centerY = Double(rect.width / 2)
         
-        let initialPoint = CGPoint(x: centerX + radius * cos(0), y: centerY + radius * sin(0))
+        let originAngle = Double.pi / 2
+        let originX = centerX + radius * -cos(originAngle)
+        let originY = centerY + radius * -sin(originAngle)
+        let originPoint = CGPoint(x: originX, y: originY)
         
         let path = CGMutablePath()
-        path.move(to: initialPoint)
+        path.move(to: originPoint)
         
-        for i in 0...Int(numberOfPoints) {
-            let x = centerX + radius * cos(angleIncrement * Double(i) * 2)
-            let y = centerY + radius * sin(angleIncrement * Double(i) * 2)
+        for i in 1...numberOfPoints {
+            let newAngle = angle * Double(i) * 2 + originAngle
+            
+            let x = centerX - radius * cos(newAngle)
+            let y = centerY - radius * sin(newAngle)
             
             let nextPoint = CGPoint(x: x, y: y)
             
             path.addLine(to: nextPoint)
         }
         
+        let starLayer = CAShapeLayer()
+        starLayer.frame = rect
         starLayer.path = path
         starLayer.fillColor = UIColor.white.cgColor
         
