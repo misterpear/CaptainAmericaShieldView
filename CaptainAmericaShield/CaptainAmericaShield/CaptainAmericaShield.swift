@@ -70,7 +70,7 @@ extension CaptainAmericaShield {
         return circleLayer
     }
     
-    func star(withPoint point: Int) -> CAShapeLayer {
+    static func starLayer(with points: Int, frame: CGRect) -> CAShapeLayer {
         
         return CAShapeLayer()
     }
