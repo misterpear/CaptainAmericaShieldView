@@ -9,6 +9,22 @@
 import UIKit
 
 class CaptainAmericaShield: UIView {
+    
+    struct Palette {
+        let firstCircleColor: UIColor
+        let secondCircleColor: UIColor
+        let thirdCircleColor: UIColor
+        let fourthCircleColor: UIColor
+        let starColor: UIColor
+        
+        init(firstCircleColor: UIColor = .red, secondCircleColor: UIColor = .white, thirdCircleColor: UIColor = .red, fourthCircleColor: UIColor = .blue, starColor: UIColor = .white) {
+            self.firstCircleColor = firstCircleColor
+            self.secondCircleColor = secondCircleColor
+            self.thirdCircleColor = thirdCircleColor
+            self.fourthCircleColor = fourthCircleColor
+            self.starColor = starColor
+        }
+    }
 
     let firstCircleLayer: CAShapeLayer
     let secondCircleLayer: CAShapeLayer
@@ -52,6 +68,17 @@ class CaptainAmericaShield: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init(frame: CGRect, palette: Palette) {
+        self.init(frame: frame)
+        
+        firstCircleLayer.strokeColor = palette.firstCircleColor.cgColor
+        secondCircleLayer.strokeColor = palette.secondCircleColor.cgColor
+        thirdCircleLayer.strokeColor = palette.thirdCircleColor.cgColor
+        fourthCircleLayer.backgroundColor = palette.fourthCircleColor.cgColor
+        fourthCircleLayer.borderColor = palette.fourthCircleColor.cgColor
+        starLayer.fillColor = palette.starColor.cgColor
     }
     
 }

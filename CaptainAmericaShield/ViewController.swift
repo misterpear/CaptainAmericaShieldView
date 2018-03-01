@@ -18,7 +18,10 @@ class ViewController: UIViewController {
         
         let shieldWidth = 300
         
-        shieldView = CaptainAmericaShield(frame: CGRect(x: 0, y: 0, width: shieldWidth, height: shieldWidth))
+        let palette = CaptainAmericaShield.Palette(firstCircleColor: .green, secondCircleColor: .orange, thirdCircleColor: .green, fourthCircleColor: .purple)
+        let frame = CGRect(x: 0, y: 0, width: shieldWidth, height: shieldWidth)
+        
+        shieldView = CaptainAmericaShield(frame: frame, palette: palette)
         view.addSubview(shieldView)
         
         shieldView.center = view.center
