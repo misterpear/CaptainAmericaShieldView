@@ -10,32 +10,32 @@ import UIKit
 
 class CaptainAmericaShield: UIView {
 
-    let firstRedCircleLayer: CAShapeLayer
-    let whiteCircleLayer: CAShapeLayer
-    let secondRedCircleLayer: CAShapeLayer
-    let blueCircleLayer: CALayer
-    let starLayer: CALayer
+    let firstCircleLayer: CAShapeLayer
+    let secondCircleLayer: CAShapeLayer
+    let thirdCircleLayer: CAShapeLayer
+    let fourthCircleLayer: CALayer
+    let starLayer: CAShapeLayer
     
     override init(frame: CGRect) {
         let itemWidth = frame.height / 10
         let boundsCenter = CGPoint(x: frame.width / 2, y: frame.height / 2)
         
         // #DB5120
-        firstRedCircleLayer = CaptainAmericaShield.circleLayer(center: boundsCenter, radius: itemWidth * 4.5, lineWidth: itemWidth, color: .red)
+        firstCircleLayer = CaptainAmericaShield.circleLayer(center: boundsCenter, radius: itemWidth * 4.5, lineWidth: itemWidth, color: .red)
         
         // #FEFEFE
-        whiteCircleLayer = CaptainAmericaShield.circleLayer(center: boundsCenter, radius: itemWidth * 3.5, lineWidth: itemWidth, color: .white)
+        secondCircleLayer = CaptainAmericaShield.circleLayer(center: boundsCenter, radius: itemWidth * 3.5, lineWidth: itemWidth, color: .white)
         
-        secondRedCircleLayer = CaptainAmericaShield.circleLayer(center: boundsCenter, radius: itemWidth * 2.5, lineWidth: itemWidth, color: .red)
+        thirdCircleLayer = CaptainAmericaShield.circleLayer(center: boundsCenter, radius: itemWidth * 2.5, lineWidth: itemWidth, color: .red)
         
         // #2987DF
-        blueCircleLayer = CALayer()
-        blueCircleLayer.frame = CGRect(x: 0, y: 0, width: itemWidth * 4, height: itemWidth * 4)
-        blueCircleLayer.cornerRadius = (itemWidth * 4) / 2
-        blueCircleLayer.borderWidth = itemWidth
-        blueCircleLayer.borderColor = UIColor.blue.cgColor
-        blueCircleLayer.backgroundColor = UIColor.blue.cgColor
-        blueCircleLayer.position = boundsCenter
+        fourthCircleLayer = CALayer()
+        fourthCircleLayer.frame = CGRect(x: 0, y: 0, width: itemWidth * 4, height: itemWidth * 4)
+        fourthCircleLayer.cornerRadius = (itemWidth * 4) / 2
+        fourthCircleLayer.borderWidth = itemWidth
+        fourthCircleLayer.borderColor = UIColor.blue.cgColor
+        fourthCircleLayer.backgroundColor = UIColor.blue.cgColor
+        fourthCircleLayer.position = boundsCenter
 
         let starLayerFrame = CGRect(x: 0, y: 0, width: itemWidth * 4, height: itemWidth * 4)
         starLayer = CaptainAmericaShield.starWithFivePoints(frame: starLayerFrame)
@@ -43,10 +43,10 @@ class CaptainAmericaShield: UIView {
         
         super.init(frame: frame)
         
-        layer.addSublayer(firstRedCircleLayer)
-        layer.addSublayer(whiteCircleLayer)
-        layer.addSublayer(secondRedCircleLayer)
-        layer.addSublayer(blueCircleLayer)
+        layer.addSublayer(firstCircleLayer)
+        layer.addSublayer(secondCircleLayer)
+        layer.addSublayer(thirdCircleLayer)
+        layer.addSublayer(fourthCircleLayer)
         layer.addSublayer(starLayer)
     }
     
